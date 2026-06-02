@@ -1,0 +1,18 @@
+<div class="toolbar">
+  <a routerLink="/">Accueil</a>
+  <a routerLink="/viewer">Viewer</a>
+  <span class="separator">|</span>
+  <button type="button" (click)="fileInput.click()" [disabled]="isLoading">
+    Charger des écritures
+  </button>
+  <input
+    #fileInput
+    type="file"
+    accept=".json,application/json"
+    hidden
+    (change)="onFileSelected($event)" />
+  <span class="info" *ngIf="ecrituresCount > 0">{{ ecrituresCount }} écritures</span>
+  <span class="info" *ngIf="ecrituresCount === 0">Modèle ouvert sans données (importez des écritures pour l'aperçu)</span>
+  <span class="error" *ngIf="errorMessage">{{ errorMessage }}</span>
+</div>
+<div #host class="designer-host"></div>
